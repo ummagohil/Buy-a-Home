@@ -1,4 +1,4 @@
-# ✋Buy a Home
+# 🛖Buy a Home
 
 This tool will enable you to enter numbers such as deposit, income, mortgage interest rates etc. to understand the affordability of value of home.
 
