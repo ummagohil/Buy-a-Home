@@ -1,13 +1,31 @@
 "use client";
 import Form from "@/components/Form";
 import Output from "@/components/Output";
+import { cn } from "@/lib/utils";
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+} from "@/components/ui/command";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+
+import { Button } from "@/components/ui/button";
+import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
 import { useState } from "react";
 
 export default function Home() {
   const [income, setIncome] = useState<number>(0);
   const [incomeMultiplier, setIncomeMultiplier] = useState<number>(0);
   const [mortgageInterestRate, setMortgageInterestRate] = useState<number>(0);
-  const [lengthOfMortgage, setLengthOfMortgage] = useState<number>(0);
+
+  const [open, setOpen] = useState(false);
+  const [lengthOfMortgage, setLengthOfMortgage] = useState(0);
 
   const onChangeIncome = (e: any) => {
     e.preventDefault;
@@ -24,6 +42,50 @@ export default function Home() {
     setMortgageInterestRate(e.target.value);
   };
 
+  const mortgageLengthData = [
+    {
+      value: 15,
+      label: "15 years",
+    },
+    {
+      value: 20,
+      label: "20 years",
+    },
+    {
+      value: 25,
+      label: "25 years",
+    },
+    {
+      value: 30,
+      label: "30 years",
+    },
+  ];
+
+  const mortgageLengthValue = (
+    <CommandGroup>
+      {mortgageLengthData.map((years: any) => (
+        <CommandItem
+          key={years.value}
+          value={years.value}
+          onSelect={() => {
+            setLengthOfMortgage(years.value as any);
+            setOpen(false);
+          }}
+        >
+          {years.label}
+          <CheckIcon
+            className={cn(
+              "ml-auto h-4 w-4",
+              lengthOfMortgage === years.value ? "opacity-100" : "opacity-0"
+            )}
+          />
+        </CommandItem>
+      ))}
+    </CommandGroup>
+  );
+
+  console.log(lengthOfMortgage);
+
   return (
     <div className="flex">
       <p>income:{income}</p>
@@ -37,6 +99,8 @@ export default function Home() {
         onChangeMultiplier={onChangeIncomeMultiplier}
         mortgageInterestRate={mortgageInterestRate}
         onChangeMortgageInterestRate={onChangeMortgageInterestRate}
+        mortgageLengthData={mortgageLengthData}
+        mortgageLengthValue={mortgageLengthValue}
       />
       <Output />
     </div>
