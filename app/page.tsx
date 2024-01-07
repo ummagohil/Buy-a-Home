@@ -27,8 +27,8 @@ export default function Home() {
   const [depositPercentage, setDepositPercentage] = useState(0);
   const [open, setOpen] = useState(false);
 
-  let depositAmount = 0;
-  let housePrice = 0;
+  let housePrice;
+  let depositAmount;
 
   const maxBorrow = income * incomeMultiplier;
   depositAmount = housePrice * (depositPercentage / 100);
@@ -104,11 +104,11 @@ export default function Home() {
 
   return (
     <div className="flex">
-      <p>income:{income}</p>
+      {/* <p>income:{income}</p>
       <p>multiplier: {incomeMultiplier}</p>
       <p>interest rate: {mortgageInterestRate}</p>
       <p>length of mortgage:{lengthOfMortgage}</p>
-      <p>house price: {housePrice}</p>
+      <p>house price: {housePrice}</p> */}
       <Form
         income={income}
         onChangeIncome={onChangeIncome}
@@ -121,7 +121,14 @@ export default function Home() {
         onChangeDepositPercentage={onChangeDepositPercentage}
         depositPercentage={depositPercentage}
       />
-      <Output />
+      <Output
+        income={income}
+        deposit={depositAmount}
+        housePrice={housePrice}
+        maxBorrow={maxBorrow}
+        totalPayments={totalPayments}
+        monthlyRepayments={monthlyRepayments}
+      />
     </div>
   );
 }

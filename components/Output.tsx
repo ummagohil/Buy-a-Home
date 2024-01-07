@@ -1,11 +1,24 @@
-export default function Output() {
+export default function Output({
+  income,
+  deposit,
+  housePrice,
+  maxBorrow,
+  totalPayments,
+  monthlyRepayments,
+}: any) {
   return (
     <div>
-      <p>annual income: value they inputted</p>
+      {/* <p>annual income: value they inputted</p>
       <p>deposit: value of deposit calculated</p>
       <p>House price: maximum borrowing + deposit amount</p>
       <p>Maximum borrowing: income x multiplier</p>
-      <p>Monthly repayments: all the values above calculated</p>
+      <p>Monthly repayments: all the values above calculated</p> */}
+      <p>income: {income}</p>
+      <p>deposit: {deposit} </p>
+      <p>house price: {housePrice}</p>
+      <p>max borrow: {maxBorrow}</p>
+      <p>total payments (yearly): {totalPayments}</p>
+      <p>monthly repayments:{monthlyRepayments}</p>
     </div>
   );
 }
