@@ -2,8 +2,7 @@
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
-
+import { CaretSortIcon } from "@radix-ui/react-icons";
 import { Command } from "@/components/ui/command";
 import {
   Popover,
@@ -21,9 +20,7 @@ export default function Form({
   onChangeDepositPercentage,
   mortgageInterestRate,
   onChangeMortgageInterestRate,
-
   mortgageLengthData,
-
   mortgageLengthValue,
 }: any) {
   const [open, setOpen] = useState(false);
