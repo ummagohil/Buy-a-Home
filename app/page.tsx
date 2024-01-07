@@ -7,17 +7,7 @@ import { CommandGroup, CommandItem } from "@/components/ui/command";
 import { CheckIcon } from "@radix-ui/react-icons";
 import { useState } from "react";
 
-// send the follow calculations to the output component:
-// annualIncome = user val
-// depositMultiplier = user val
-// depositAmount = housePrice * depositMultiplier
-// maxBorrow = annualIncome * incomeMultiplier
-// housePrice = maxBorrow + deposit amount
-// principalLoan = housePrice - depositAmount
-// annualInterestRate = value between 2% - 5% [user needs to input this]
-// monthlyInterestRate = annualInterestRate / 12
-// totalPayments = lengthOfMortgage * 12
-// monthlyRepayments = principalLoan * (monthlyInterestRate*(1+monthlyInterestRate)**totalPayments - 1)
+// to do: make deposit optional, if there is a val use that in calculations otherwise do it automatically
 
 export default function Home() {
   const [income, setIncome] = useState<number>(0);

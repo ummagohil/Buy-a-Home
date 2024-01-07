@@ -11,6 +11,8 @@ import {
 } from "@/components/ui/popover";
 import { useState } from "react";
 
+// bug: the val of length of year does not currently change onClick
+
 export default function Form({
   income,
   onChangeIncome,
@@ -27,13 +29,13 @@ export default function Form({
   const [value, setValue] = useState(0);
   return (
     <form>
-      <label>Annual income</label>
+      <label>Annual income (£)</label>
       <Input
         className="border rounded w-1/3"
         onChange={onChangeIncome}
         value={income}
       />
-      <label>Income multiplier</label>
+      <label>Income multiplier (3 - 5)</label>
       <Input
         className="border rounded w-1/3"
         type="number"
@@ -42,7 +44,7 @@ export default function Form({
         defaultValue={multiplier}
         onChange={onChangeMultiplier}
       />
-      <label>Deposit percentage</label>
+      <label>Deposit percentage (5% - 20%)</label>
       <Input
         className="border rounded  w-1/3"
         type="number"
@@ -51,7 +53,7 @@ export default function Form({
         defaultValue={depositPercentage}
         onChange={onChangeDepositPercentage}
       />
-      <label>Mortgage Interest Rate [2-5%]</label>
+      <label>Mortgage Interest Rate (2% - 5%)</label>
       <Input
         className="border rounded  w-1/3"
         type="number"
