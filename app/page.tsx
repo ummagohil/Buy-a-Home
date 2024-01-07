@@ -27,18 +27,17 @@ export default function Home() {
   const [depositPercentage, setDepositPercentage] = useState(0);
   const [open, setOpen] = useState(false);
 
-  let housePrice;
-  let depositAmount;
-
   const maxBorrow = income * incomeMultiplier;
-  depositAmount = housePrice * (depositPercentage / 100);
-  housePrice = maxBorrow + depositAmount;
+  const housePrice = maxBorrow / (1 - depositPercentage / 100); // Adjusted formula
+  const depositAmount = housePrice * (depositPercentage / 100); // Now depends on the adjusted housePrice
   const principalLoan = housePrice - depositAmount;
   const monthlyInterestRate = mortgageInterestRate / 100 / 12;
   const totalPayments = lengthOfMortgage * 12;
   const monthlyRepayments =
-    principalLoan *
-    (monthlyInterestRate * (1 + monthlyInterestRate) ** totalPayments - 1);
+    (principalLoan *
+      (monthlyInterestRate *
+        Math.pow(1 + monthlyInterestRate, totalPayments))) /
+    (Math.pow(1 + monthlyInterestRate, totalPayments) - 1);
 
   const onChangeIncome = (e: any) => {
     e.preventDefault;
@@ -104,11 +103,6 @@ export default function Home() {
 
   return (
     <div className="flex">
-      {/* <p>income:{income}</p>
-      <p>multiplier: {incomeMultiplier}</p>
-      <p>interest rate: {mortgageInterestRate}</p>
-      <p>length of mortgage:{lengthOfMortgage}</p>
-      <p>house price: {housePrice}</p> */}
       <Form
         income={income}
         onChangeIncome={onChangeIncome}
@@ -132,9 +126,3 @@ export default function Home() {
     </div>
   );
 }
-
-// send income, multiplier, deposit percentage, deposit values as props (so it can be handled here with calculations)
-
-// program all calculations for everything here and pass it down to the output component
-
-// remember to do typechecking (though everything will be a number)
