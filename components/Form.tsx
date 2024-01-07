@@ -1,19 +1,42 @@
+"use client";
+
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
+
+import { cn } from "@/lib/utils";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuPortal,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+} from "@/components/ui/command";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { useState } from "react";
+const mortgageLengthData = [
+  {
+    value: 15,
+    label: "15 years",
+  },
+  {
+    value: 20,
+    label: "20 years",
+  },
+  {
+    value: 25,
+    label: "25 years",
+  },
+  {
+    value: 30,
+    label: "30 years",
+  },
+];
+
 export default function Form({
   income,
   onChangeIncome,
@@ -26,6 +49,9 @@ export default function Form({
   lengthOfMortgage,
   onChangeLengthOfMortgage,
 }: any) {
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState(0);
+  console.log(value);
   return (
     <form>
       <label>Annual income</label>
@@ -61,27 +87,48 @@ export default function Form({
         defaultValue={mortgageInterestRate}
         onChange={onChangeMortgageInterestRate}
       />
-      <label>Length of Mortgage</label>
-      [dropdown of values of 15, 20, 25, 30]
-      {/* <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button variant="outline">Length of Mortgage</Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-auto text-center">
-          <DropdownMenuGroup className="text-center">
-            <DropdownMenuItem>15 years</DropdownMenuItem>
-            <DropdownMenuItem>20 years</DropdownMenuItem>
-            <DropdownMenuItem>25 years</DropdownMenuItem>
-            <DropdownMenuItem>30 years</DropdownMenuItem>
-          </DropdownMenuGroup>
-        </DropdownMenuContent>
-      </DropdownMenu> */}
-      <div className="flex justify-around ">
-        <Button variant="outline">15 years</Button>
-        <Button variant="outline">20 years</Button>
-        <Button variant="outline">25 years</Button>
-        <Button variant="outline">30 years</Button>
-      </div>
+
+      <Popover open={open} onOpenChange={setOpen}>
+        <PopoverTrigger asChild>
+          <Button
+            variant="outline"
+            role="combobox"
+            aria-expanded={open}
+            className="w-[200px] justify-between"
+          >
+            {value
+              ? mortgageLengthData.find(
+                  (mortgageLengthData) => mortgageLengthData.value === value
+                )?.label
+              : "Length of mortgage"}
+            <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent className="w-[200px] p-0">
+          <Command>
+            <CommandGroup>
+              {mortgageLengthData.map((years) => (
+                <CommandItem
+                  key={years.value}
+                  value={years.value}
+                  onSelect={(currentValue: any) => {
+                    setValue(years.value as any);
+                    setOpen(false);
+                  }}
+                >
+                  {years.label}
+                  <CheckIcon
+                    className={cn(
+                      "ml-auto h-4 w-4",
+                      value === years.value ? "opacity-100" : "opacity-0"
+                    )}
+                  />
+                </CommandItem>
+              ))}
+            </CommandGroup>
+          </Command>
+        </PopoverContent>
+      </Popover>
     </form>
   );
 }
