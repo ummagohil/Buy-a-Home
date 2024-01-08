@@ -26,6 +26,23 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+
+import { Separator } from "@/components/ui/separator";
+
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "@/components/ui/resizable";
+
 export default function Form({
   income,
   onChangeIncome,
@@ -57,142 +74,153 @@ export default function Form({
     </svg>
   );
   return (
-    <form>
-      <FormItem>
-        <FormLabel>Annual income</FormLabel>
-        <FormDescription className="flex items-center">
-          Enter income before tax.{" "}
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger> {moreInfo}</TooltipTrigger>
-              <TooltipContent>
-                <p>[description/formula]</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-        </FormDescription>
-        <FormControl>
-          <Input
-            placeholder="income"
-            onChange={onChangeIncome}
-            value={income}
-          />
-        </FormControl>
-        <FormMessage />
-      </FormItem>
+    <Card>
+      <CardHeader>
+        <CardTitle>Mortgage Calculator</CardTitle>
+        <CardDescription>
+          Enter values to calculate home and mortgage estimation values
+        </CardDescription>
+      </CardHeader>
+      <Separator />
+      <CardContent>
+        <form>
+          <FormItem>
+            <FormLabel>Annual income</FormLabel>
+            <FormDescription className="flex items-center">
+              Enter income before tax.{" "}
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger> {moreInfo}</TooltipTrigger>
+                  <TooltipContent>
+                    <p>[description/formula]</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </FormDescription>
+            <FormControl>
+              <Input
+                placeholder="income"
+                onChange={onChangeIncome}
+                value={income}
+              />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
 
-      <FormItem>
-        <FormLabel>Income multiplier</FormLabel>
-        <FormDescription className="flex items-center">
-          (3-5 times){" "}
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger> {moreInfo}</TooltipTrigger>
-              <TooltipContent>
-                <p>[description/formula]</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-        </FormDescription>
-        <FormControl>
-          <Input
-            type="number"
-            min="3"
-            max="5"
-            placeholder="enter a value between 3 and 5s"
-            defaultValue={multiplier}
-            onChange={onChangeMultiplier}
-          />
-        </FormControl>
-        <FormMessage />
-      </FormItem>
+          <FormItem>
+            <FormLabel>Income multiplier</FormLabel>
+            <FormDescription className="flex items-center">
+              (3-5 times){" "}
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger> {moreInfo}</TooltipTrigger>
+                  <TooltipContent>
+                    <p>[description/formula]</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </FormDescription>
+            <FormControl>
+              <Input
+                type="number"
+                min="3"
+                max="5"
+                placeholder="enter a value between 3 and 5s"
+                defaultValue={multiplier}
+                onChange={onChangeMultiplier}
+              />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
 
-      <FormItem>
-        <FormLabel>Deposit percentage</FormLabel>
-        <FormDescription className="flex items-center">
-          (5% - 20%){" "}
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger> {moreInfo}</TooltipTrigger>
-              <TooltipContent>
-                <p>[description/formula]</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-        </FormDescription>
-        <FormControl>
-          <Input
-            type="number"
-            min="5"
-            max="20"
-            defaultValue={depositPercentage}
-            onChange={onChangeDepositPercentage}
-          />
-        </FormControl>
-        <FormMessage />
-      </FormItem>
+          <FormItem>
+            <FormLabel>Deposit percentage</FormLabel>
+            <FormDescription className="flex items-center">
+              (5% - 20%){" "}
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger> {moreInfo}</TooltipTrigger>
+                  <TooltipContent>
+                    <p>[description/formula]</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </FormDescription>
+            <FormControl>
+              <Input
+                type="number"
+                min="5"
+                max="20"
+                defaultValue={depositPercentage}
+                onChange={onChangeDepositPercentage}
+              />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
 
-      <FormItem>
-        <FormLabel>Mortgage Interest Rate</FormLabel>
-        <FormDescription className="flex items-center">
-          (2% - 5%){" "}
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger> {moreInfo}</TooltipTrigger>
-              <TooltipContent>
-                <p>[description/formula]</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-        </FormDescription>
-        <FormControl>
-          <Input
-            type="number"
-            min="2"
-            max="5"
-            defaultValue={mortgageInterestRate}
-            onChange={onChangeMortgageInterestRate}
-          />
-        </FormControl>
-        <FormMessage />
-      </FormItem>
+          <FormItem>
+            <FormLabel>Mortgage Interest Rate</FormLabel>
+            <FormDescription className="flex items-center">
+              (2% - 5%){" "}
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger> {moreInfo}</TooltipTrigger>
+                  <TooltipContent>
+                    <p>[description/formula]</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </FormDescription>
+            <FormControl>
+              <Input
+                type="number"
+                min="2"
+                max="5"
+                defaultValue={mortgageInterestRate}
+                onChange={onChangeMortgageInterestRate}
+              />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
 
-      <FormItem>
-        <FormLabel>Length of Mortgage</FormLabel>
-        <FormDescription className="flex items-center">
-          Enter total amount of years of mortgage agreement{" "}
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger> {moreInfo}</TooltipTrigger>
-              <TooltipContent>
-                <p>[description/formula]</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-        </FormDescription>
-        <FormControl>
-          <Popover open={open} onOpenChange={setOpen}>
-            <PopoverTrigger asChild>
-              <Button
-                variant="outline"
-                role="combobox"
-                aria-expanded={open}
-                className="w-[400px] justify-between"
-              >
-                {getMortgageLengthText
-                  ? `${getMortgageLengthText} years`
-                  : "Select length of mortgage"}
-                <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent className="w-[400px] p-0">
-              <Command>{mortgageLengthValue}</Command>
-            </PopoverContent>
-          </Popover>
-        </FormControl>
-        <FormMessage />
-      </FormItem>
-    </form>
+          <FormItem>
+            <FormLabel>Length of Mortgage</FormLabel>
+            <FormDescription className="flex items-center">
+              Enter total amount of years of mortgage agreement{" "}
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger> {moreInfo}</TooltipTrigger>
+                  <TooltipContent>
+                    <p>[description/formula]</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </FormDescription>
+            <FormControl>
+              <Popover open={open} onOpenChange={setOpen}>
+                <PopoverTrigger asChild>
+                  <Button
+                    variant="outline"
+                    role="combobox"
+                    aria-expanded={open}
+                    className="w-[400px] justify-between"
+                  >
+                    {getMortgageLengthText
+                      ? `${getMortgageLengthText} years`
+                      : "Select length of mortgage"}
+                    <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-[400px] p-0">
+                  <Command>{mortgageLengthValue}</Command>
+                </PopoverContent>
+              </Popover>
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        </form>
+      </CardContent>
+    </Card>
   );
 }
 

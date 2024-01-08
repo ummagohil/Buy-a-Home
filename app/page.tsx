@@ -6,6 +6,11 @@ import { CommandGroup, CommandItem } from "@/components/ui/command";
 
 import { CheckIcon } from "@radix-ui/react-icons";
 import { useState } from "react";
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "@/components/ui/resizable";
 
 // to do: make deposit optional, if there is a val use that in calculations otherwise do it automatically
 
@@ -92,28 +97,45 @@ export default function Home() {
   );
 
   return (
-    <div className="flex">
-      <Form
-        income={income}
-        onChangeIncome={onChangeIncome}
-        multiplier={incomeMultiplier}
-        onChangeMultiplier={onChangeIncomeMultiplier}
-        mortgageInterestRate={mortgageInterestRate}
-        onChangeMortgageInterestRate={onChangeMortgageInterestRate}
-        mortgageLengthData={mortgageLengthData}
-        mortgageLengthValue={mortgageLengthValue}
-        onChangeDepositPercentage={onChangeDepositPercentage}
-        depositPercentage={depositPercentage}
-        getMortgageLengthText={lengthOfMortgage}
-      />
-      <Output
-        income={income}
-        deposit={depositAmount}
-        housePrice={housePrice}
-        maxBorrow={maxBorrow}
-        totalPayments={totalPayments}
-        monthlyRepayments={monthlyRepayments}
-      />
-    </div>
+    <ResizablePanelGroup
+      direction="horizontal"
+      className="min-h-[600px] rounded-lg border"
+    >
+      <ResizablePanel defaultSize={25}>
+        <div className="flex h-full items-center justify-center p-6">
+          <span className="font-semibold">
+            <Form
+              income={income}
+              onChangeIncome={onChangeIncome}
+              multiplier={incomeMultiplier}
+              onChangeMultiplier={onChangeIncomeMultiplier}
+              mortgageInterestRate={mortgageInterestRate}
+              onChangeMortgageInterestRate={onChangeMortgageInterestRate}
+              mortgageLengthData={mortgageLengthData}
+              mortgageLengthValue={mortgageLengthValue}
+              onChangeDepositPercentage={onChangeDepositPercentage}
+              depositPercentage={depositPercentage}
+              getMortgageLengthText={lengthOfMortgage}
+            />
+          </span>
+        </div>
+      </ResizablePanel>
+      <ResizableHandle withHandle />
+      <ResizablePanel defaultSize={75}>
+        <div className="flex h-full items-center justify-center p-6">
+          <span className="font-semibold">
+            {" "}
+            <Output
+              income={income}
+              deposit={depositAmount}
+              housePrice={housePrice}
+              maxBorrow={maxBorrow}
+              totalPayments={totalPayments}
+              monthlyRepayments={monthlyRepayments}
+            />
+          </span>
+        </div>
+      </ResizablePanel>
+    </ResizablePanelGroup>
   );
 }
