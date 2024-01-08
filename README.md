@@ -20,7 +20,7 @@ This tool enables you to enter an income value, alongside values of a potential 
   npm run dev
 ```
 
-### Live Preview
+### 🖥️ Live Preview
 
 https://buy-a-home.vercel.app/
 
