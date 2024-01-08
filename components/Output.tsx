@@ -55,7 +55,7 @@ export default function Output({
         <CardTitle>Your Estimations</CardTitle>
         <CardDescription>
           All values are approximate and should be verified with a mortgage
-          provider.
+          provider
         </CardDescription>
       </CardHeader>
       <Separator />
