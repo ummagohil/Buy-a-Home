@@ -19,6 +19,13 @@ import {
   FormMessage,
 } from "./ui/form";
 
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+
 export default function Form({
   income,
   onChangeIncome,
@@ -54,7 +61,15 @@ export default function Form({
       <FormItem>
         <FormLabel>Annual income</FormLabel>
         <FormDescription className="flex items-center">
-          Enter income before tax. {moreInfo}
+          Enter income before tax.{" "}
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger> {moreInfo}</TooltipTrigger>
+              <TooltipContent>
+                <p>[description/formula]</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         </FormDescription>
         <FormControl>
           <Input
@@ -65,26 +80,19 @@ export default function Form({
         </FormControl>
         <FormMessage />
       </FormItem>
-      {/* 
-      <label>Annual income (£) </label>
-      <Input
-        className="border rounded w-1/3"
-        onChange={onChangeIncome}
-        value={income}
-      /> */}
-      {/* <label>Income multiplier (3 - 5 times)</label>
-      <Input
-        className="border rounded w-1/3"
-        type="number"
-        min="3"
-        max="5"
-        defaultValue={multiplier}
-        onChange={onChangeMultiplier}
-      /> */}
+
       <FormItem>
         <FormLabel>Income multiplier</FormLabel>
         <FormDescription className="flex items-center">
-          (3-5 times) {moreInfo}
+          (3-5 times){" "}
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger> {moreInfo}</TooltipTrigger>
+              <TooltipContent>
+                <p>[description/formula]</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         </FormDescription>
         <FormControl>
           <Input
@@ -98,19 +106,19 @@ export default function Form({
         </FormControl>
         <FormMessage />
       </FormItem>
-      {/* <label>Deposit percentage (5% - 20%)</label>
-      <Input
-        className="border rounded  w-1/3"
-        type="number"
-        min="5"
-        max="20"
-        defaultValue={depositPercentage}
-        onChange={onChangeDepositPercentage}
-      /> */}
+
       <FormItem>
         <FormLabel>Deposit percentage</FormLabel>
         <FormDescription className="flex items-center">
-          (5% - 20%) {moreInfo}
+          (5% - 20%){" "}
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger> {moreInfo}</TooltipTrigger>
+              <TooltipContent>
+                <p>[description/formula]</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         </FormDescription>
         <FormControl>
           <Input
@@ -123,19 +131,19 @@ export default function Form({
         </FormControl>
         <FormMessage />
       </FormItem>
-      {/* <label>Mortgage Interest Rate (2% - 5%)</label>
-      <Input
-        className="border rounded  w-1/3"
-        type="number"
-        min="2"
-        max="5"
-        defaultValue={mortgageInterestRate}
-        onChange={onChangeMortgageInterestRate}
-      /> */}
+
       <FormItem>
         <FormLabel>Mortgage Interest Rate</FormLabel>
         <FormDescription className="flex items-center">
-          (2% - 5%) {moreInfo}
+          (2% - 5%){" "}
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger> {moreInfo}</TooltipTrigger>
+              <TooltipContent>
+                <p>[description/formula]</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         </FormDescription>
         <FormControl>
           <Input
@@ -148,30 +156,19 @@ export default function Form({
         </FormControl>
         <FormMessage />
       </FormItem>
-      {/* 
-      <Popover open={open} onOpenChange={setOpen}>
-        <PopoverTrigger asChild>
-          <Button
-            variant="outline"
-            role="combobox"
-            aria-expanded={open}
-            className="w-[200px] justify-between"
-          >
-            {getMortgageLengthText
-              ? `${getMortgageLengthText} years`
-              : "Length of mortgage"}
-            <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-          </Button>
-        </PopoverTrigger>
-        <PopoverContent className="w-[200px] p-0">
-          <Command>{mortgageLengthValue}</Command>
-        </PopoverContent>
-      </Popover> */}
 
       <FormItem>
         <FormLabel>Length of Mortgage</FormLabel>
         <FormDescription className="flex items-center">
-          Enter total amount of years of mortgage agreement {moreInfo}
+          Enter total amount of years of mortgage agreement{" "}
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger> {moreInfo}</TooltipTrigger>
+              <TooltipContent>
+                <p>[description/formula]</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         </FormDescription>
         <FormControl>
           <Popover open={open} onOpenChange={setOpen}>
@@ -184,7 +181,7 @@ export default function Form({
               >
                 {getMortgageLengthText
                   ? `${getMortgageLengthText} years`
-                  : "Length of mortgage"}
+                  : "Select length of mortgage"}
                 <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
               </Button>
             </PopoverTrigger>
