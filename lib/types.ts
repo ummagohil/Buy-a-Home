@@ -1,16 +1,17 @@
-import { ChangeEventHandler } from "react";
+import { ChangeEventHandler, ReactNode } from "react";
 
 export type Form = {
   income: number | ChangeEventHandler<HTMLInputElement>;
-  onChangeIncome: number;
+  onChangeIncome: number | ChangeEventHandler<HTMLInputElement>;
   multiplier: number | ChangeEventHandler<HTMLInputElement>;
-  onChangeMultiplier: number;
+  onChangeMultiplier: number | ChangeEventHandler<HTMLInputElement>;
   depositPercentage: number | ChangeEventHandler<HTMLInputElement>;
-  onChangeDepositPercentage: number;
-  mortgageInterestRate: number;
-  onChangeMortgageInterestRate: number;
-  mortgageLengthValue: number;
-  getMortgageLengthText: number;
+  onChangeDepositPercentage: number | ChangeEventHandler<HTMLInputElement>;
+  mortgageInterestRate: number | ChangeEventHandler<HTMLInputElement>;
+  onChangeMortgageInterestRate: number | ChangeEventHandler<HTMLInputElement>;
+  mortgageLengthValue: any;
+  mortgageLengthData: any;
+  getMortgageLengthText: number | ChangeEventHandler<HTMLInputElement>;
 };
 
 export type Output = {
@@ -19,4 +20,5 @@ export type Output = {
   housePrice: number;
   maxBorrow: number;
   monthlyRepayments: number;
+  totalPayments: number;
 };

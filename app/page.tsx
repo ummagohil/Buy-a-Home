@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import { CommandGroup, CommandItem } from "@/components/ui/command";
 
 import { CheckIcon } from "@radix-ui/react-icons";
-import { useState } from "react";
+import { ChangeEventHandler, useState } from "react";
 import {
   ResizableHandle,
   ResizablePanel,
@@ -18,9 +18,9 @@ export default function Home() {
   const [income, setIncome] = useState<number>(0);
   const [incomeMultiplier, setIncomeMultiplier] = useState<number>(0);
   const [mortgageInterestRate, setMortgageInterestRate] = useState<number>(0);
-  const [lengthOfMortgage, setLengthOfMortgage] = useState(0);
-  const [depositPercentage, setDepositPercentage] = useState(0);
-  const [open, setOpen] = useState(false);
+  const [lengthOfMortgage, setLengthOfMortgage] = useState<number>(0);
+  const [depositPercentage, setDepositPercentage] = useState<number>(0);
+  const [open, setOpen] = useState<boolean>(false);
 
   const maxBorrow = income * incomeMultiplier;
   const housePrice = maxBorrow / (1 - depositPercentage / 100); // Adjusted formula
@@ -35,24 +35,28 @@ export default function Home() {
       (Math.pow(1 + monthlyInterestRate, totalPayments) - 1)
     : 0;
 
-  const onChangeIncome = (e: any) => {
+  const onChangeIncome = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault;
-    setIncome(e.target.value);
+    setIncome(e.target.value as unknown as number);
   };
 
-  const onChangeIncomeMultiplier = (e: any) => {
+  const onChangeIncomeMultiplier = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault;
-    setIncomeMultiplier(e.target.value);
+    setIncomeMultiplier(e.target.value as unknown as number);
   };
 
-  const onChangeMortgageInterestRate = (e: any) => {
+  const onChangeMortgageInterestRate = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
     e.preventDefault;
-    setMortgageInterestRate(e.target.value);
+    setMortgageInterestRate(e.target.value as unknown as number);
   };
 
-  const onChangeDepositPercentage = (e: any) => {
+  const onChangeDepositPercentage = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
     e.preventDefault;
-    setDepositPercentage(e.target.value);
+    setDepositPercentage(e.target.value as unknown as number);
   };
 
   const mortgageLengthData = [
@@ -76,12 +80,12 @@ export default function Home() {
 
   const mortgageLengthValue = (
     <CommandGroup>
-      {mortgageLengthData.map((years: any) => (
+      {mortgageLengthData.map((years: { value: number; label: string }) => (
         <CommandItem
           key={years.value}
           value={years.value}
           onSelect={() => {
-            setLengthOfMortgage(years.value as any);
+            setLengthOfMortgage(years.value as number);
             setOpen(false);
           }}
         >
@@ -107,7 +111,9 @@ export default function Home() {
           <span className="font-semibold">
             <Form
               income={income}
-              onChangeIncome={onChangeIncome}
+              onChangeIncome={
+                onChangeIncome as unknown as ChangeEventHandler<HTMLInputElement>
+              }
               multiplier={incomeMultiplier}
               onChangeMultiplier={onChangeIncomeMultiplier}
               mortgageInterestRate={mortgageInterestRate}

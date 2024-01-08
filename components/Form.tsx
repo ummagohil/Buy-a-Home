@@ -208,8 +208,10 @@ export default function Form({
                 type="number"
                 min="2"
                 max="5"
-                defaultValue={mortgageInterestRate}
-                onChange={onChangeMortgageInterestRate}
+                defaultValue={mortgageInterestRate as number}
+                onChange={
+                  onChangeMortgageInterestRate as unknown as ChangeEventHandler<HTMLInputElement>
+                }
               />
             </FormControl>
             <FormMessage />
