@@ -11,7 +11,7 @@ This tool enables you to enter an income value, alongside values of a potential 
 
 - TypeScript
 - React
-- NextJS
+- Next.js
 - Zod
 
 ### 🔧How to Run the App
