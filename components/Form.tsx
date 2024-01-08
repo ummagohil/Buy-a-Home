@@ -1,5 +1,8 @@
 "use client";
 
+import * as z from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { CaretSortIcon, InfoCircled } from "@radix-ui/react-icons";
@@ -14,6 +17,7 @@ import { useState } from "react";
 import {
   FormControl,
   FormDescription,
+  FormField,
   FormItem,
   FormLabel,
   FormMessage,
@@ -37,11 +41,11 @@ import {
 
 import { Separator } from "@/components/ui/separator";
 
-import {
-  ResizableHandle,
-  ResizablePanel,
-  ResizablePanelGroup,
-} from "@/components/ui/resizable";
+import { Controller, useForm } from "react-hook-form";
+
+const formSchema = z.object({
+  multiplier: z.number().min(3).max(5, "Multiplier must be between 3 and 5"),
+});
 
 export default function Form({
   income,
@@ -52,7 +56,6 @@ export default function Form({
   onChangeDepositPercentage,
   mortgageInterestRate,
   onChangeMortgageInterestRate,
-  mortgageLengthData,
   mortgageLengthValue,
   getMortgageLengthText,
 }: any) {
@@ -73,6 +76,14 @@ export default function Form({
       ></path>
     </svg>
   );
+  const {
+    control,
+    formState: { errors },
+    watch,
+  } = useForm({
+    resolver: zodResolver(formSchema),
+  });
+
   return (
     <Card>
       <CardHeader>
@@ -124,15 +135,26 @@ export default function Form({
               </TooltipProvider>
             </FormDescription>
             <FormControl>
-              <Input
-                type="number"
-                min="3"
-                max="5"
-                placeholder="enter a value between 3 and 5s"
-                defaultValue={multiplier}
-                onChange={onChangeMultiplier}
+              <Controller
+                name="multiplier"
+                control={control}
+                render={({ field }: any) => (
+                  <Input
+                    type="number"
+                    min="3"
+                    max="5"
+                    placeholder="enter a value between 3 and 5"
+                    defaultValue={multiplier}
+                    onChange={onChangeMultiplier}
+                    onBlur={field.onBlur}
+                  />
+                )}
               />
             </FormControl>
+            {errors.multiplier && (
+              <FormMessage>{errors.multiplier.message}</FormMessage>
+            )}
+
             <FormMessage />
           </FormItem>
 

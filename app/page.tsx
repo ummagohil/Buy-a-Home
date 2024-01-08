@@ -100,10 +100,10 @@ export default function Home() {
   return (
     <ResizablePanelGroup
       direction="horizontal"
-      className="min-h-[600px] rounded-lg border"
+      className="min-h-[600px] rounded-lg "
     >
       <ResizablePanel defaultSize={50}>
-        <div className="flex h-full items-center justify-center p-6">
+        <div className="flex h-screen items-center justify-center p-6">
           <span className="font-semibold">
             <Form
               income={income}
