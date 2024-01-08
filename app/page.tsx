@@ -101,7 +101,7 @@ export default function Home() {
       direction="horizontal"
       className="min-h-[600px] rounded-lg border"
     >
-      <ResizablePanel defaultSize={25}>
+      <ResizablePanel defaultSize={50}>
         <div className="flex h-full items-center justify-center p-6">
           <span className="font-semibold">
             <Form
@@ -121,7 +121,7 @@ export default function Home() {
         </div>
       </ResizablePanel>
       <ResizableHandle withHandle />
-      <ResizablePanel defaultSize={75}>
+      <ResizablePanel defaultSize={50}>
         <div className="flex h-full items-center justify-center p-6">
           <span className="font-semibold">
             {" "}
