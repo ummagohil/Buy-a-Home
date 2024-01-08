@@ -13,7 +13,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-import { useState } from "react";
+import { ChangeEvent, ChangeEventHandler, useState } from "react";
 import {
   FormControl,
   FormDescription,
@@ -42,6 +42,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 
 import { Controller, useForm } from "react-hook-form";
+import { Form } from "@/lib/types";
 
 const formSchema = z.object({
   multiplier: z.number().min(3).max(5, "Multiplier must be between 3 and 5"),
@@ -58,7 +59,7 @@ export default function Form({
   onChangeMortgageInterestRate,
   mortgageLengthValue,
   getMortgageLengthText,
-}: any) {
+}: Form) {
   const [open, setOpen] = useState(false);
   const moreInfo = (
     <svg
@@ -111,8 +112,10 @@ export default function Form({
             <FormControl>
               <Input
                 placeholder="income"
-                onChange={onChangeIncome}
-                value={income}
+                onChange={
+                  onChangeIncome as unknown as ChangeEventHandler<HTMLInputElement>
+                }
+                value={income as number}
               />
             </FormControl>
             <FormMessage />
@@ -144,8 +147,10 @@ export default function Form({
                     min="3"
                     max="5"
                     placeholder="enter a value between 3 and 5"
-                    defaultValue={multiplier}
-                    onChange={onChangeMultiplier}
+                    defaultValue={multiplier as number}
+                    onChange={
+                      onChangeMultiplier as unknown as ChangeEventHandler<HTMLInputElement>
+                    }
                     onBlur={field.onBlur}
                   />
                 )}
@@ -176,8 +181,10 @@ export default function Form({
                 type="number"
                 min="5"
                 max="20"
-                defaultValue={depositPercentage}
-                onChange={onChangeDepositPercentage}
+                defaultValue={depositPercentage as number}
+                onChange={
+                  onChangeDepositPercentage as unknown as ChangeEventHandler<HTMLInputElement>
+                }
               />
             </FormControl>
             <FormMessage />

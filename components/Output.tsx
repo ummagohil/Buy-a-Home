@@ -17,6 +17,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Output } from "@/lib/types";
 
 import { Separator } from "./ui/separator";
 import {
@@ -32,7 +33,7 @@ export default function Output({
   housePrice,
   maxBorrow,
   monthlyRepayments,
-}: any) {
+}: Output) {
   const moreInfo = (
     <svg
       width="15"
@@ -91,7 +92,7 @@ export default function Output({
               </TableCell>
               <TableCell></TableCell>
               <TableCell className="text-right">
-                £{Number(deposit).toFixed(2)} approx.
+                £{deposit.toFixed(2)} approx.
               </TableCell>
             </TableRow>
             <TableRow>
@@ -109,7 +110,7 @@ export default function Output({
               </TableCell>
               <TableCell></TableCell>
               <TableCell className="text-right">
-                £{Number(housePrice).toFixed(2)}
+                £{housePrice.toFixed(2)}
               </TableCell>
             </TableRow>
             <TableRow>
@@ -127,7 +128,7 @@ export default function Output({
               </TableCell>
               <TableCell></TableCell>
               <TableCell className="text-right">
-                £{Number(maxBorrow).toFixed(2)}
+                £{maxBorrow.toFixed(2)}
               </TableCell>
             </TableRow>
           </TableBody>
@@ -135,7 +136,7 @@ export default function Output({
           <TableFooter>
             <TableRow>
               <TableCell colSpan={3}>
-                Monthly repayments{" "}
+                Monthly repayments
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger> {moreInfo}</TooltipTrigger>
@@ -152,7 +153,7 @@ export default function Output({
                 </TooltipProvider>
               </TableCell>
               <TableCell className="text-right">
-                £{Number(monthlyRepayments).toFixed(2)}
+                £{monthlyRepayments.toFixed(2)}
               </TableCell>
             </TableRow>
           </TableFooter>
