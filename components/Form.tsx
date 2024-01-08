@@ -95,9 +95,9 @@ export default function Form({
       <Separator />
       <CardContent>
         <form>
-          <FormItem>
+          <FormItem className="mt-4">
             <FormLabel>Annual income</FormLabel>
-            <FormDescription className="flex items-center">
+            <FormDescription className="flex items-center !mt-0">
               Enter income before tax
               <TooltipProvider>
                 <Tooltip>
@@ -118,10 +118,10 @@ export default function Form({
             <FormMessage />
           </FormItem>
 
-          <FormItem>
+          <FormItem className="mt-4">
             <FormLabel>Income multiplier</FormLabel>
-            <FormDescription className="flex items-center">
-              (3-5 times){" "}
+            <FormDescription className="flex items-center !mt-0">
+              (3 - 5 times)
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger> {moreInfo}</TooltipTrigger>
@@ -158,9 +158,9 @@ export default function Form({
             <FormMessage />
           </FormItem>
 
-          <FormItem>
+          <FormItem className="mt-4">
             <FormLabel>Deposit percentage</FormLabel>
-            <FormDescription className="flex items-center">
+            <FormDescription className="flex items-center !mt-0">
               (5% - 20%){" "}
               <TooltipProvider>
                 <Tooltip>
@@ -183,9 +183,9 @@ export default function Form({
             <FormMessage />
           </FormItem>
 
-          <FormItem>
+          <FormItem className="mt-4">
             <FormLabel>Mortgage Interest Rate</FormLabel>
-            <FormDescription className="flex items-center">
+            <FormDescription className="flex items-center !mt-0">
               (2% - 5%){" "}
               <TooltipProvider>
                 <Tooltip>
@@ -208,10 +208,10 @@ export default function Form({
             <FormMessage />
           </FormItem>
 
-          <FormItem>
+          <FormItem className="mt-4">
             <FormLabel>Length of Mortgage</FormLabel>
-            <FormDescription className="flex items-center">
-              Enter total amount of years of mortgage agreement{" "}
+            <FormDescription className="flex items-center !mt-0">
+              Enter total amount of years of mortgage agreement
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger> {moreInfo}</TooltipTrigger>
