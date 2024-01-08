@@ -42,7 +42,7 @@ export default function Output({
           <TableHeader>
             <TableRow>
               <TableHead className="w-[100px]">Type</TableHead>
-              <TableHead>Status</TableHead>
+              <TableHead>Calculation</TableHead>
               <TableHead></TableHead>
               <TableHead className="text-right">Amount</TableHead>
             </TableRow>
