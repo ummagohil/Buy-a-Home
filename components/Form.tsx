@@ -118,7 +118,6 @@ export default function Form({
                 value={income as number}
               />
             </FormControl>
-            <FormMessage />
           </FormItem>
 
           <FormItem className="mt-4">
@@ -159,8 +158,6 @@ export default function Form({
             {/* {errors.multiplier && (
               <FormMessage>{errors.multiplier.message}</FormMessage>
             )} */}
-
-            <FormMessage />
           </FormItem>
 
           <FormItem className="mt-4">
@@ -187,7 +184,6 @@ export default function Form({
                 }
               />
             </FormControl>
-            <FormMessage />
           </FormItem>
 
           <FormItem className="mt-4">
@@ -214,7 +210,6 @@ export default function Form({
                 }
               />
             </FormControl>
-            <FormMessage />
           </FormItem>
 
           <FormItem className="mt-4">
@@ -250,7 +245,6 @@ export default function Form({
                 </PopoverContent>
               </Popover>
             </FormControl>
-            <FormMessage />
           </FormItem>
         </form>
       </CardContent>
