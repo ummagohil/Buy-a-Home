@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { CaretSortIcon, InfoCircled } from "@radix-ui/react-icons";
+import { CaretSortIcon } from "@radix-ui/react-icons";
 import { Command } from "@/components/ui/command";
 import {
   Popover,
@@ -156,9 +156,9 @@ export default function Form({
                 )}
               />
             </FormControl>
-            {errors.multiplier && (
+            {/* {errors.multiplier && (
               <FormMessage>{errors.multiplier.message}</FormMessage>
-            )}
+            )} */}
 
             <FormMessage />
           </FormItem>

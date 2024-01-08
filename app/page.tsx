@@ -83,7 +83,7 @@ export default function Home() {
       {mortgageLengthData.map((years: { value: number; label: string }) => (
         <CommandItem
           key={years.value}
-          value={years.value}
+          value={years.value as any}
           onSelect={() => {
             setLengthOfMortgage(years.value);
             setOpen(false);
