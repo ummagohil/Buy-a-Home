@@ -1,6 +1,6 @@
 # 🛖Buy a Home
 
-This tool enables you to enter an income value, alongside values of a potential mortgage such as deposit percentage and interest rate to find out the deposit required and the value of home that could be purchased.
+This tool enables you to enter values such as income and deposit percentage to view a mortgage that could be lent to a potential buyer in the UK.
 
 ### 📋Aims of App
 
