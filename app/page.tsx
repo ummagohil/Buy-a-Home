@@ -85,7 +85,7 @@ export default function Home() {
           key={years.value}
           value={years.value}
           onSelect={() => {
-            setLengthOfMortgage(years.value as number);
+            setLengthOfMortgage(years.value);
             setOpen(false);
           }}
         >
