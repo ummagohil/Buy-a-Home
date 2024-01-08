@@ -104,6 +104,7 @@ export default function Home() {
         mortgageLengthValue={mortgageLengthValue}
         onChangeDepositPercentage={onChangeDepositPercentage}
         depositPercentage={depositPercentage}
+        getMortgageLengthText={lengthOfMortgage}
       />
       <Output
         income={income}
