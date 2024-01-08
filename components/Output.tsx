@@ -82,7 +82,7 @@ export default function Output({
                 Deposit
                 <TooltipProvider>
                   <Tooltip>
-                    <TooltipTrigger> {moreInfo}</TooltipTrigger>
+                    <TooltipTrigger>{moreInfo}</TooltipTrigger>
                     <TooltipContent>
                       <p>House price x deposit percentage</p>
                     </TooltipContent>

@@ -87,7 +87,7 @@ export default function Form({
           <FormItem>
             <FormLabel>Annual income</FormLabel>
             <FormDescription className="flex items-center">
-              Enter income before tax.{" "}
+              Enter income before tax
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger> {moreInfo}</TooltipTrigger>

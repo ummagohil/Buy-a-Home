@@ -28,11 +28,12 @@ export default function Home() {
   const principalLoan = housePrice - depositAmount;
   const monthlyInterestRate = mortgageInterestRate / 100 / 12;
   const totalPayments = lengthOfMortgage * 12;
-  const monthlyRepayments =
-    (principalLoan *
-      (monthlyInterestRate *
-        Math.pow(1 + monthlyInterestRate, totalPayments))) /
-    (Math.pow(1 + monthlyInterestRate, totalPayments) - 1);
+  const monthlyRepayments = totalPayments
+    ? (principalLoan *
+        (monthlyInterestRate *
+          Math.pow(1 + monthlyInterestRate, totalPayments))) /
+      (Math.pow(1 + monthlyInterestRate, totalPayments) - 1)
+    : 0;
 
   const onChangeIncome = (e: any) => {
     e.preventDefault;
