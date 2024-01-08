@@ -92,7 +92,7 @@ export default function Form({
                 <Tooltip>
                   <TooltipTrigger> {moreInfo}</TooltipTrigger>
                   <TooltipContent>
-                    <p>[description/formula]</p>
+                    <p>Gross income</p>
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
@@ -115,7 +115,10 @@ export default function Form({
                 <Tooltip>
                   <TooltipTrigger> {moreInfo}</TooltipTrigger>
                   <TooltipContent>
-                    <p>[description/formula]</p>
+                    <p>
+                      This is the max denominator the mortgage provider is
+                      willing to lend
+                    </p>
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
@@ -141,7 +144,7 @@ export default function Form({
                 <Tooltip>
                   <TooltipTrigger> {moreInfo}</TooltipTrigger>
                   <TooltipContent>
-                    <p>[description/formula]</p>
+                    <p>House price x income multiplier</p>
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
@@ -166,7 +169,7 @@ export default function Form({
                 <Tooltip>
                   <TooltipTrigger> {moreInfo}</TooltipTrigger>
                   <TooltipContent>
-                    <p>[description/formula]</p>
+                    <p>The interest that is added to the mortgage lended</p>
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
@@ -191,7 +194,7 @@ export default function Form({
                 <Tooltip>
                   <TooltipTrigger> {moreInfo}</TooltipTrigger>
                   <TooltipContent>
-                    <p>[description/formula]</p>
+                    <p>Total years of mortgage agreement</p>
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
