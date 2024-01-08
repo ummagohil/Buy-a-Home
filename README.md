@@ -1,16 +1,18 @@
 # 🛖Buy a Home
 
-This tool will enable you to enter numbers such as deposit, income, mortgage interest rates etc. to understand the affordability of value of home.
+This tool enables you to enter an income value, alongside values of a potential mortgage such as deposit percentage and interest rate to find out the deposit required and the value of home that could be purchased.
 
 ### 📋Aims of App
 
-[TBC]
+- View how much deposit needed for a home based on income (before tax)
+- Set variables such as income multiplier, length of mortgage, deposit percentage and interest rate
 
 ### 👩‍💻Technical Details
 
 - TypeScript
 - React
 - NextJS
+- Zod
 
 ### 🔧How to Run the App
 
@@ -18,4 +20,12 @@ This tool will enable you to enter numbers such as deposit, income, mortgage int
   npm run dev
 ```
 
+### Live Preview
+
+https://buy-a-home.vercel.app/
+
 ### 💭Future Improvements
+
+- Validation
+- Testing
+- Refactor DRY code/state management
