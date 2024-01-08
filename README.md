@@ -13,6 +13,8 @@ A tool to enter values such as income and deposit percentage to view a mortgage 
 - React
 - Next.js
 - Zod
+- Shadcn/ui
+- TailwindCSS
 
 ### 🔧How to Run the App
 
