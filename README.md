@@ -1,6 +1,6 @@
 # 🛖Buy a Home
 
-This tool enables you to enter values such as income and deposit percentage to view a mortgage that could be lent to a potential buyer in the UK.
+A tool to enter values such as income and deposit percentage to view a mortgage that could be lent to a potential buyer in the UK.
 
 ### 📋Aims of App
 
