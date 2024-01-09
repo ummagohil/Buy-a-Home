@@ -46,6 +46,14 @@ import { Form } from "@/lib/types";
 
 const formSchema = z.object({
   multiplier: z.number().min(3).max(5, "Multiplier must be between 3 and 5"),
+  depositPercentage: z
+    .number()
+    .min(5)
+    .max(20, "Deposit percentage must be between 5 and 20"),
+  mortgageInterestRate: z
+    .number()
+    .min(2)
+    .max(5, "Mortgage interest rate must be between 2 and 5"),
 });
 
 export default function Form({
@@ -157,7 +165,7 @@ export default function Form({
                       onChange={
                         onChangeMultiplier as unknown as ChangeEventHandler<HTMLInputElement>
                       }
-                      onBlur={field.onBlur}
+                      // onBlur={field.onBlur}
                       {...field}
                     />
                   )}
@@ -182,42 +190,62 @@ export default function Form({
                 </TooltipProvider>
               </FormDescription>
               <FormControl>
-                <Input
-                  type="number"
-                  min="5"
-                  max="20"
-                  defaultValue={depositPercentage as number}
-                  onChange={
-                    onChangeDepositPercentage as unknown as ChangeEventHandler<HTMLInputElement>
-                  }
+                <FormField
+                  name="depositPercentage"
+                  control={control}
+                  render={({ field }: any) => (
+                    <Input
+                      type="number"
+                      min="5"
+                      max="20"
+                      defaultValue={depositPercentage as number}
+                      onChange={
+                        onChangeDepositPercentage as unknown as ChangeEventHandler<HTMLInputElement>
+                      }
+                      {...field}
+                    />
+                  )}
                 />
               </FormControl>
+              {errors.depositPercentage && (
+                <FormMessage>{errors.depositPercentage.message}</FormMessage>
+              )}
             </FormItem>
 
             <FormItem className="mt-4">
               <FormLabel>Mortgage Interest Rate</FormLabel>
               <FormDescription className="flex items-center !mt-0">
-                (2% - 5%){" "}
+                (2% - 5%)
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger> {moreInfo}</TooltipTrigger>
                     <TooltipContent>
-                      <p>The interest that is added to the mortgage lended</p>
+                      <p>The interest that is added to the mortgage lent</p>
                     </TooltipContent>
                   </Tooltip>
                 </TooltipProvider>
               </FormDescription>
               <FormControl>
-                <Input
-                  type="number"
-                  min="2"
-                  max="5"
-                  defaultValue={mortgageInterestRate as number}
-                  onChange={
-                    onChangeMortgageInterestRate as unknown as ChangeEventHandler<HTMLInputElement>
-                  }
+                <FormField
+                  name="mortgageInterestRate"
+                  control={control}
+                  render={({ field }: any) => (
+                    <Input
+                      type="number"
+                      min="2"
+                      max="5"
+                      defaultValue={mortgageInterestRate as number}
+                      onChange={
+                        onChangeMortgageInterestRate as unknown as ChangeEventHandler<HTMLInputElement>
+                      }
+                      {...field}
+                    />
+                  )}
                 />
               </FormControl>
+              {errors.mortgageInterestRate && (
+                <FormMessage>{errors.mortgageInterestRate.message}</FormMessage>
+              )}
             </FormItem>
 
             <FormItem className="mt-4">
