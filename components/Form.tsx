@@ -81,12 +81,15 @@ export default function Form({
     control,
     formState: { errors },
     watch,
-  } = useForm({
+  } = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     mode: "onChange",
   });
 
-  const methods = useForm();
+  const methods = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    mode: "onChange",
+  });
 
   return (
     <Card>
@@ -141,7 +144,7 @@ export default function Form({
                 </TooltipProvider>
               </FormDescription>
               <FormControl>
-                <Controller
+                <FormField
                   name="multiplier"
                   control={control}
                   render={({ field }: any) => (
@@ -155,6 +158,7 @@ export default function Form({
                         onChangeMultiplier as unknown as ChangeEventHandler<HTMLInputElement>
                       }
                       onBlur={field.onBlur}
+                      {...field}
                     />
                   )}
                 />
