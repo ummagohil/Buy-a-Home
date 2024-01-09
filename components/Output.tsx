@@ -33,7 +33,7 @@ export default function Output({
   housePrice,
   maxBorrow,
   monthlyRepayments,
-}: Output) {
+}: any) {
   const moreInfo = (
     <svg
       width="15"

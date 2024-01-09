@@ -45,12 +45,15 @@ import { Controller, useForm, FormProvider } from "react-hook-form";
 import { Form } from "@/lib/types";
 
 const formSchema = z.object({
-  multiplier: z.number().min(3).max(5, "Multiplier must be between 3 and 5"),
-  depositPercentage: z
+  multiplier: z.coerce
+    .number()
+    .min(3)
+    .max(5, "Multiplier must be between 3 and 5"),
+  depositPercentage: z.coerce
     .number()
     .min(5)
     .max(20, "Deposit percentage must be between 5 and 20"),
-  mortgageInterestRate: z
+  mortgageInterestRate: z.coerce
     .number()
     .min(2)
     .max(5, "Mortgage interest rate must be between 2 and 5"),
