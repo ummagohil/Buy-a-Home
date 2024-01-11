@@ -130,7 +130,7 @@ export default function Form({
               <FormControl>
                 <Input
                   placeholder="income"
-                  onChange={
+                  onChangeCapture={
                     onChangeIncome as unknown as ChangeEventHandler<HTMLInputElement>
                   }
                   value={income as number}
@@ -165,7 +165,7 @@ export default function Form({
                       max="5"
                       placeholder="enter a value between 3 and 5"
                       defaultValue={multiplier as number}
-                      onChange={
+                      onChangeCapture={
                         onChangeMultiplier as unknown as ChangeEventHandler<HTMLInputElement>
                       }
                       // onBlur={field.onBlur}
@@ -202,7 +202,7 @@ export default function Form({
                       min="5"
                       max="20"
                       defaultValue={depositPercentage as number}
-                      onChange={
+                      onChangeCapture={
                         onChangeDepositPercentage as unknown as ChangeEventHandler<HTMLInputElement>
                       }
                       {...field}
@@ -238,7 +238,7 @@ export default function Form({
                       min="2"
                       max="5"
                       defaultValue={mortgageInterestRate as number}
-                      onChange={
+                      onChangeCapture={
                         onChangeMortgageInterestRate as unknown as ChangeEventHandler<HTMLInputElement>
                       }
                       {...field}
