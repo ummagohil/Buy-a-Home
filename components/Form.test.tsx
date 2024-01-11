@@ -1,6 +1,5 @@
-import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import test, { it } from "node:test";
+import { render, screen } from "@testing-library/react";
 import Form from "./Form";
 import { Form as FormProps } from "@/lib/types";
 
@@ -22,5 +21,9 @@ test("render elements on the form page", async () => {
   it("render the input", () => {
     render(<Form {...FormProps} />);
     expect(screen.getByRole("input")).toHaveLength(2);
+  });
+  it("render labels", () => {
+    render(<Form {...FormProps} />);
+    expect(screen.getByRole("label")).toHaveLength(2);
   });
 });
