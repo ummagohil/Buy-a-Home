@@ -17,13 +17,42 @@ const FormProps: FormProps = {
   getMortgageLengthText: 0,
 };
 
-test("render elements on the form page", async () => {
-  it("render the input", () => {
-    render(<Form {...FormProps} />);
-    expect(screen.getByRole("input")).toHaveLength(2);
-  });
-  it("render labels", () => {
-    render(<Form {...FormProps} />);
-    expect(screen.getByRole("label")).toHaveLength(2);
-  });
+/**
+ * TO TEST
+ * - Renders title "mortgage calculator correctly"
+ * - Renders sub-text of "Enter values to calculate home and mortgage estimation values"
+ * - All labels render the correct text
+ * - All subtext under labels render correct text
+ * - SVG for more info can be found
+ * - Dropdown menu can be found
+ * - All inputs can be found (length of 4)
+ */
+
+it("Title render: 'Mortgage Calculator", async () => {
+  render(<Form {...FormProps} />);
+  expect(screen.findAllByText(/Mortgage Calculator/)).toBeTruthy();
+});
+
+it("Title render: 'Enter values to calculate home and mortgage estimation values'", () => {
+  render(<Form {...FormProps} />);
+  expect(
+    screen.findAllByText(
+      /Enter values to calculate home and mortgage estimation values/
+    )
+  ).toBeTruthy();
+});
+
+it("Renders textbox for income", () => {
+  render(<Form {...FormProps} />);
+  expect(screen.getByRole("textbox")).toBeTruthy();
+});
+
+it("Renders textbox for number steppers", () => {
+  render(<Form {...FormProps} />);
+  expect(screen.getAllByRole("spinbutton")).toHaveLength(3);
+});
+
+it("Renders textbox for combobox", () => {
+  render(<Form {...FormProps} />);
+  expect(screen.getByRole("combobox")).toBeTruthy();
 });
