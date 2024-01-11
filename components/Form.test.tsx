@@ -17,17 +17,6 @@ const FormProps: FormProps = {
   getMortgageLengthText: 0,
 };
 
-/**
- * TO TEST
- * - Renders title "mortgage calculator correctly"
- * - Renders sub-text of "Enter values to calculate home and mortgage estimation values"
- * - All labels render the correct text
- * - All subtext under labels render correct text
- * - SVG for more info can be found
- * - Dropdown menu can be found
- * - All inputs can be found (length of 4)
- */
-
 it("Title render: 'Mortgage Calculator", async () => {
   render(<Form {...FormProps} />);
   expect(screen.findAllByText(/Mortgage Calculator/)).toBeTruthy();
