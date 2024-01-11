@@ -28,6 +28,4 @@ https://buy-a-home.vercel.app/
 
 ### 💭Future Improvements
 
-- Validation
-- Testing
-- Refactor DRY code/state management
+- Refactor DRY code/state management and type checking
