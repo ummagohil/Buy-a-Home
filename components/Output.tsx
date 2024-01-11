@@ -33,7 +33,7 @@ export default function Output({
   housePrice,
   maxBorrow,
   monthlyRepayments,
-}: any) {
+}: Output) {
   const moreInfo = (
     <svg
       width="15"
@@ -50,6 +50,14 @@ export default function Output({
       ></path>
     </svg>
   );
+  const incomeParsed = Number(income).toLocaleString();
+  const depositParsed = Number(deposit.toFixed(2)).toLocaleString();
+  const housePriceParsed = Number(housePrice.toFixed(2)).toLocaleString();
+  const maxBorrowParsed = Number(maxBorrow.toFixed(2)).toLocaleString();
+  const monthlyRepaymentsParsed = Number(
+    monthlyRepayments.toFixed(2)
+  ).toLocaleString();
+
   return (
     <Card>
       <CardHeader>
@@ -75,7 +83,7 @@ export default function Output({
               <TableCell className="font-medium">Personal</TableCell>
               <TableCell>Income</TableCell>
               <TableCell></TableCell>
-              <TableCell className="text-right">£{income}</TableCell>
+              <TableCell className="text-right">£{incomeParsed}</TableCell>
             </TableRow>
             <TableRow>
               <TableCell className="font-medium"></TableCell>
@@ -92,7 +100,7 @@ export default function Output({
               </TableCell>
               <TableCell></TableCell>
               <TableCell className="text-right">
-                £{deposit.toFixed(2)} approx.
+                £{depositParsed} approx.
               </TableCell>
             </TableRow>
             <TableRow>
@@ -109,9 +117,7 @@ export default function Output({
                 </TooltipProvider>
               </TableCell>
               <TableCell></TableCell>
-              <TableCell className="text-right">
-                £{housePrice.toFixed(2)}
-              </TableCell>
+              <TableCell className="text-right">£{housePriceParsed}</TableCell>
             </TableRow>
             <TableRow>
               <TableCell className="font-medium">Mortgage</TableCell>
@@ -127,9 +133,7 @@ export default function Output({
                 </TooltipProvider>
               </TableCell>
               <TableCell></TableCell>
-              <TableCell className="text-right">
-                £{maxBorrow.toFixed(2)}
-              </TableCell>
+              <TableCell className="text-right">£{maxBorrowParsed}</TableCell>
             </TableRow>
           </TableBody>
 
@@ -153,7 +157,7 @@ export default function Output({
                 </TooltipProvider>
               </TableCell>
               <TableCell className="text-right">
-                £{monthlyRepayments.toFixed(2)}
+                £{monthlyRepaymentsParsed}
               </TableCell>
             </TableRow>
           </TableFooter>
@@ -162,4 +166,3 @@ export default function Output({
     </Card>
   );
 }
-// to do: type checking everything is a number, instead of parsing
