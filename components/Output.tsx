@@ -50,11 +50,13 @@ export default function Output({
       ></path>
     </svg>
   );
-  const incomeParsed = Number(income).toLocaleString();
-  const depositParsed = Number(deposit.toFixed(2)).toLocaleString();
-  const housePriceParsed = Number(housePrice.toFixed(2)).toLocaleString();
-  const maxBorrowParsed = Number(maxBorrow.toFixed(2)).toLocaleString();
-  const monthlyRepaymentsParsed = Number(
+  const incomeParsed: string = Number(income).toLocaleString();
+  const depositParsed: string = Number(deposit.toFixed(2)).toLocaleString();
+  const housePriceParsed: string = Number(
+    housePrice.toFixed(2)
+  ).toLocaleString();
+  const maxBorrowParsed: string = Number(maxBorrow.toFixed(2)).toLocaleString();
+  const monthlyRepaymentsParsed: string = Number(
     monthlyRepayments.toFixed(2)
   ).toLocaleString();
 

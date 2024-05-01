@@ -12,8 +12,6 @@ import {
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
 
-// to do: make deposit optional, if there is a val use that in calculations otherwise do it automatically
-
 export default function Home() {
   const [income, setIncome] = useState<number>(0);
   const [incomeMultiplier, setIncomeMultiplier] = useState<number>(0);
@@ -22,13 +20,13 @@ export default function Home() {
   const [depositPercentage, setDepositPercentage] = useState<number>(0);
   const [open, setOpen] = useState<boolean>(false);
 
-  const maxBorrow = income * incomeMultiplier;
-  const housePrice = maxBorrow / (1 - depositPercentage / 100); // Adjusted formula
-  const depositAmount = housePrice * (depositPercentage / 100); // Now depends on the adjusted housePrice
-  const principalLoan = housePrice - depositAmount;
-  const monthlyInterestRate = mortgageInterestRate / 100 / 12;
-  const totalPayments = lengthOfMortgage * 12;
-  const monthlyRepayments = totalPayments
+  const maxBorrow: number = income * incomeMultiplier;
+  const housePrice: number = maxBorrow / (1 - depositPercentage / 100); // Adjusted formula
+  const depositAmount: number = housePrice * (depositPercentage / 100); // Now depends on the adjusted housePrice
+  const principalLoan: number = housePrice - depositAmount;
+  const monthlyInterestRate: number = mortgageInterestRate / 100 / 12;
+  const totalPayments: number = lengthOfMortgage * 12;
+  const monthlyRepayments: number = totalPayments
     ? (principalLoan *
         (monthlyInterestRate *
           Math.pow(1 + monthlyInterestRate, totalPayments))) /
@@ -59,7 +57,7 @@ export default function Home() {
     setDepositPercentage(e.target.value as unknown as number);
   };
 
-  const mortgageLengthData = [
+  const mortgageLengthData: any[] = [
     {
       value: 15,
       label: "15 years",
@@ -75,6 +73,10 @@ export default function Home() {
     {
       value: 30,
       label: "30 years",
+    },
+    {
+      value: 40,
+      label: "40 years",
     },
   ];
 
